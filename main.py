@@ -10,7 +10,7 @@ date = datetime.now().strftime("%m/%d/%Y")
 time = datetime.now().strftime("%H:%M:%S")
 
 nutrition_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheety_endpoint = "https://api.sheety.co/1535b87ed86e1f83ec9c3d5640e64173/workoutTracking/workouts"
+sheety_endpoint = "https://api.sheety.co/1535b87ed86e1f83ec9c3d5640e64173/myWorkouts/workouts"
 
 nutrition_headers = {
     "x-app-id": APP_ID,
@@ -40,4 +40,3 @@ for exercise in data:
         }
     }
     requests.post(url=sheety_endpoint, json=sheety_body, headers=sheety_headers)
-
