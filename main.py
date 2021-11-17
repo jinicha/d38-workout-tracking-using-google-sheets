@@ -18,11 +18,16 @@ nutrition_headers = {
     "x-remote-user-id": "0"
 }
 nutrition_body = {
-    "query": "i ran 5 miles and did yoga for 40 minutes"
+    "query": "i jogged 5 mins and did yoga for 10 mins"
 }
 
 response = requests.post(url=nutrition_endpoint, headers=nutrition_headers, json=nutrition_body)
 data = response.json()["exercises"]
+
+sheety_headers = {
+    "Content-Type": "application/json",
+    "Authorization": f'Bearer {TOKEN}'
+}
 
 for exercise in data:
     sheety_body = {
@@ -34,11 +39,5 @@ for exercise in data:
             "calories": exercise["nf_calories"]
         }
     }
+    res = requests.post(url=sheety_endpoint, json=sheety_body, headers=sheety_headers)
 
-sheety_headers = {
-    "Content-Type": "application/json",
-    "Authorization": f'Bearer {TOKEN}'
-}
-
-res = requests.post(url=sheety_endpoint, json=sheety_body, headers=sheety_headers)
-print(data)
